@@ -57,14 +57,14 @@ public class BoardController
 		// if (bindingResult.hasErrors())
 		// {
 		// log.info("===== qna write error =====");
-		// mv.setViewName("qna/write");
+		// mv.setViewName("board/write");
 		// return mv;
 		// }
 
-//		int rs = boardService.setWriteList(boardVO);
-//
-//		redirectAttributes.addAttribute("rs", rs);
-//		mv.setViewName("redirect:./list");
+		int rs = boardService.setWriteList(boardVO);
+
+		redirectAttributes.addAttribute("rs", rs);
+		mv.setViewName("redirect:./list");
 
 		return mv;
 	}
@@ -77,7 +77,7 @@ public class BoardController
 
 		boardVO = boardService.getDetail(boardVO);
 
-		mv.addObject("boardVO", boardVO);
+		mv.addObject("boVO", boardVO);
 		mv.setViewName("board/detail");
 
 		return mv;

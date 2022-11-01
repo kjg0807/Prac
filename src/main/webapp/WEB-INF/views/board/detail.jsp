@@ -10,7 +10,7 @@
 <c:import url="../temp/boot.jsp"></c:import>
 
 <body>
-	<section class="container-fluid col-lg-6">
+	<section class="container-fluid col-lg-10">
 		<h1 style="text-align: center;">Qna Detail Page</h1>
 		<div class="mb-3">
 			<table class="table table-hover">
@@ -24,23 +24,25 @@
 					<td>Picture</td>
 				</tr>
 				<tr>
-					<td>${boardVO.num}</td>
-					<td>${boardVO.title}</td>
-					<td>${boardVO.writer}</td>
-					<td>${boardVO.contents}</td>
-					<td>${boardVO.regDate}</td>
-					<td>${boardVO.hit}</td>
-					<c:forEach items="${boardVO.boardFileVOs }" var="file">
-						<c:choose>
-							<c:when test="${file.fileName == null }">
-								<td>파일이 존재하지 않음</td>
-							</c:when>
-						</c:choose>
-						<c:otherwise>
-							<td>
-								<img style="width: 250px; height: 200px;" src="/file/qna/${file.fileName}">
-							</td>
-						</c:otherwise>
+					<td>${boVO.num}</td>
+					<td>${boVO.title}</td>
+					<td>${boVO.writer}</td>
+					<td>${boVO.contents}</td>
+					<td>${boVO.regDate}</td>
+					<td>${boVO.hit}</td>
+					<c:forEach items="${boVO.boardFileVOs }" var="file">
+						<td>
+							<c:choose>
+								<c:when test="${file.fileName == null }">
+									<c:forEach items="${boVO.boardFileVOs }" var="VO">
+										파일이 존재하지 않음
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<img style="width: 200px; height: 150px;" src="/file/${file.fileName}">
+								</c:otherwise>
+							</c:choose>
+						</td>
 					</c:forEach>
 				</tr>
 			</table>

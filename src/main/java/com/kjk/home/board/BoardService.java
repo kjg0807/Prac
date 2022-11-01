@@ -38,6 +38,11 @@ public class BoardService
 	public int setWriteList(BoardVO boardVO) throws Exception
 	{
 		int rs = boardMapper.setWriteList(boardVO);
+		log.info("===== write rs: {} =====", rs);
+		// if (rs < 1)
+		// {
+		// throw new Exception();
+		// }
 
 		// log.info("RealPath: {}", path);
 		File file = new File(path);

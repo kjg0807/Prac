@@ -43,10 +43,12 @@
 		resultMap="DetailFile">
 		select * from
 		qna q
-		inner join
+		left join
 		qnaFiles qf
 		on q.num = qf.num
-		where qf.num = #{num}
+		where
+		qf.num =
+		#{num}
 	</select>
 
 	<resultMap type="BoardVO" id="DetailFile">

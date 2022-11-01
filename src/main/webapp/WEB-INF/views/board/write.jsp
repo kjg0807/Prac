@@ -18,7 +18,7 @@
 </style>
 <script defer src="/js/write.js"></script>
 <body>
-	<form:form modelAttribute="boardVO" method="post" enctype="multipart/form-data">
+	<form:form modelAttribute="boardVO" method="post" enctype="multipart/form-data" id="frm">
 		<section class="container-fluid col-lg-6 mt-5">
 			<h1>Qna Write Page</h1>
 			<div class="mb-3">
