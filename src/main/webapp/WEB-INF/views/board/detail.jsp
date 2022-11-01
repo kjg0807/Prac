@@ -10,7 +10,7 @@
 <c:import url="../temp/boot.jsp"></c:import>
 
 <body>
-	<section class="container-fluid col-lg-10">
+	<section class="container-fluid col-lg-10" style="text-align: center;">
 		<h1 style="text-align: center;">Qna Detail Page</h1>
 		<div class="mb-3">
 			<table class="table table-hover">
