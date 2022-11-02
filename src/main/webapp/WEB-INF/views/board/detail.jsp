@@ -22,6 +22,17 @@
 					<td>Date</td>
 					<td>Hit</td>
 					<td>Picture</td>
+					<c:forEach items="${boVO.boardFileVOs }" var="file">
+						<c:choose>
+							<c:when test="${file.fileName == null }">
+								<c:forEach items="${ar.qnaFileVOs }" var="file">
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<td>Picture Link</td>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
 				</tr>
 				<tr>
 					<td>${boVO.num}</td>
@@ -35,11 +46,24 @@
 							<c:choose>
 								<c:when test="${file.fileName == null }">
 									<c:forEach items="${boVO.boardFileVOs }" var="VO">
-										파일이 존재하지 않음
+										No File
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
-									<img style="width: 200px; height: 150px;" src="/file/${file.fileName}">
+									<a href="/file/qna/${file.fileName}">
+										<img style="width: 200px; height: 150px;" src="/file/qna/${file.fileName}">
+									</a>
+								</c:otherwise>
+							</c:choose>
+						</td>
+						<td>
+							<c:choose>
+								<c:when test="${file.fileName == null }">
+									<c:forEach items="${boVO.boardFileVOs }" var="file">
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<a class="btn btn-outline-dark" href="/fileDown/qna?fileNum=${file.fileNum }">Picture Download</a>
 								</c:otherwise>
 							</c:choose>
 						</td>
@@ -47,6 +71,7 @@
 				</tr>
 			</table>
 		</div>
+		<a href="./list" class="btn btn-outline-dark">list Page</a>
 	</section>
 </body>
 

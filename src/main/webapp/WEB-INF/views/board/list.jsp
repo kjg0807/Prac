@@ -29,12 +29,13 @@ a {
 			<br>
 			<div class="dd">
 				<div class="col-6">
-					<label for="inlineFormSelectPref">검색할 제목을 입력</label>
+					<label for="inlineFormSelectPref"><b>검색할 제목을 입력</b></label>
 					<div class="input-group">
 						<input type="text" name="search" value="${param.pager}" class="form-control"
 							id="inlineFormInputGroupUsername" placeholder="Input Word">
 						<button type="submit" class="btn btn-outline-dark">Search</button>
 					</div>
+					<label for="inlineFormSelectPref">빈칸 검색시 전체 내용</label>
 				</div>
 			</div>
 			<br>

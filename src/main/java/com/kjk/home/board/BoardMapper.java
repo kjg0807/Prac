@@ -18,4 +18,6 @@ public interface BoardMapper
 	public int setFileWrite(BoardFileVO boardFileVO) throws Exception;
 
 	public BoardVO getDetail(BoardVO boardVO) throws Exception;
+
+	public BoardFileVO getDetailFileDown(BoardFileVO boardFileVO) throws Exception;
 }

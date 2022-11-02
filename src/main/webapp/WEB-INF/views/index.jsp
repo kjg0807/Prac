@@ -10,10 +10,12 @@
 <c:import url="./temp/boot.jsp"></c:import>
 </head>
 <body>
-	<h1>Home</h1>
-	<a href="./member/login" class="btn btn-outline-dark">Login</a>
-	
-	
-	<a href="./board/list" class="btn btn-outline-dark">Board List</a>
+	<div style="text-align: center; margin-top: 15%;">
+		<h1>Home</h1>
+		<a href="./member/login" class="btn btn-outline-dark">Login</a>
+
+
+		<a href="./board/list" class="btn btn-outline-dark">Board List</a>
+	</div>
 </body>
 </html>

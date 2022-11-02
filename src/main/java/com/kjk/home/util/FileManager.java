@@ -21,22 +21,28 @@ import org.springframework.web.servlet.view.AbstractView;
 
 import com.kjk.home.board.BoardFileVO;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Component
+@Slf4j
 public class FileManager extends AbstractView
 {
 	@Value("${app.download.base}")
 	private String base;
+	// -> app.download.base=D:/GDRS/upload/
+	// -> app.download.base=/resource/upload/
+	// -> 다운로드 경로
 
 	@Override // 다운로드 걸어주는 메서드
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
-		// log.info("------------------------------------------------------");
-		// log.info("File Download View");
 		BoardFileVO boardFileVO = (BoardFileVO) model.get("fileVO");
 		String path = (String) model.get("path");
 		log.info("------------------------------------------------------");
 		log.info("FILEVO: {}", boardFileVO);
 
+		// base: 다운로드 경로, path: jsp에서 다운시 경로 /fileDown/{path}
+		// boardFileVO.getFileName() : 파일 이름
 		File file = new File(base + path, boardFileVO.getFileName());
 
 		// 한글 처리
@@ -62,8 +68,7 @@ public class FileManager extends AbstractView
 		fi.close();
 	}
 
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
-
+	// cmd창에서 저장될 파일 이름
 	public String saveFile(MultipartFile mf, String path) throws IOException
 	{
 		// 1. 중복되지 않는 파일 명 생성(UUID, Date)
@@ -73,13 +78,8 @@ public class FileManager extends AbstractView
 		StringBuffer bf = new StringBuffer();
 		bf.append(fileName);
 		bf.append("_");
-		// bf.append(mf.getOriginalFilename());
+		bf.append(mf.getOriginalFilename());
 		// log.info("FileName: {}", bf.toString());
-
-		// 파일명과 확장자 분리
-		String ex = mf.getOriginalFilename(); // 11.jpg
-		ex = ex.substring(ex.lastIndexOf(".")); // .jpg
-		bf.append(ex);
 
 		// 3. File 저장하기
 		File file = new File(path, bf.toString());

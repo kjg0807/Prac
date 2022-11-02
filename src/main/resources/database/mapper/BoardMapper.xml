@@ -18,6 +18,9 @@
 		<!-- SELECT * FROM qna LIMIT #{perPage} OFFSET #{offset} -->
 		SELECT count(num)
 		FROM qna
+		<if test="search!=null">
+			WHERE writer LIKE CONCAT('%',#{search},'%')
+		</if>
 		order by num desc
 	</select>
 
@@ -47,7 +50,7 @@
 		qnaFiles qf
 		on q.num = qf.num
 		where
-		qf.num =
+		q.num =
 		#{num}
 	</select>
 
@@ -66,5 +69,10 @@
 			<result column="oriName" property="oriName" />
 		</collection>
 	</resultMap>
+
+	<select id="getDetailFileDown" parameterType="BoardFileVO"
+		resultType="BoardFileVO">
+		select * from qnaFiles where fileNum = #{fileNum}
+	</select>
 
 </mapper>

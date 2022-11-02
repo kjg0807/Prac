@@ -1,6 +1,6 @@
 let count = 0;
 
-$("#fileAdd").click(function() { // 파일 추가하는 input 태그 생성
+$("#fileAdd").click(function () { // 파일 추가하는 input 태그 생성
 	let zz = parseInt(count) + 1;
 	let label = ' <label for="formGroupExampleInput" class="form-label">파일' + zz + '</label> ';
 	let input = ' <input type="file" class="form-control" name="files" id="files"> ';
@@ -22,7 +22,7 @@ $("#fileAdd").click(function() { // 파일 추가하는 input 태그 생성
 	console.log("add count: " + count);
 })
 
-$("#fileDel").click(function() { // 파일 추가하는 input 태그 삭제
+$("#fileDel").click(function () { // 파일 추가하는 input 태그 삭제
 	$("#File label:last").remove();
 	$("#File input:last").remove();
 	count--;
@@ -39,7 +39,7 @@ titleCheck = true;
 writerCheck = true;
 contentCheck = true;
 
-$("#title").blur(function() {
+$("#title").blur(function () {
 	console.log("제목 탈출");
 	if ($("#title").val() == "") {
 		$("#titleText").html("빈칸은 사용할 수 없습니다.");
@@ -69,7 +69,7 @@ $("#title").blur(function() {
 // $("").attr("color", "#2fb380");
 // 빨 : false
 // $("").attr("color", "#dc3545");
-$("#writer").blur(function() {
+$("#writer").blur(function () {
 	console.log("이름 탈출");
 	if ($("#writer").val() == "") {
 		$("#writerText").html("빈칸은 사용할 수 없습니다.");
@@ -83,7 +83,22 @@ $("#writer").blur(function() {
 	}
 })
 
-$("#writeBtn").click(function() {
+//note-editable - summernot textarea className
+$(".note-editable").blur(function () {
+	console.log("글 탈출");
+	if ($("#contents").val() == "") {
+		$("#conText").html("빈칸은 사용할 수 없습니다.");
+		$("#conText").attr("color", "#dc3545");
+		contentCheck = false;
+	}
+	else {
+		$("#conText").html("입력 완료");
+		$("#conText").attr("color", "#2fb380");
+		contentCheck = true;
+	}
+})
+
+$("#writeBtn").click(function () {
 	let title = $("#title").val();
 	let writer = $("#writer").val();
 	let contents = $("#contents").val();
@@ -97,10 +112,6 @@ $("#writeBtn").click(function() {
 	if ($("#title").val() == "") {
 		swal("제목을 작성하지 않았습니다.", "You clicked the button!", "error");
 	}
-	//if (($("#title").val() && $("#writer").val() && $("#contents").val()) == "") {
-	//	swal("작성에 실패했습니다!", "빈칸이 존재합니다.", "error");
-	//}
-
 
 	if (($("#title").val() && $("#writer").val() && $("#contents").val()) != "") {
 		//swal("작성 성공!", "리스트 페이지로 넘어갑니다.", "success");
@@ -109,7 +120,7 @@ $("#writeBtn").click(function() {
 			text: '글 추가를 성공하였습니다.',
 			icon: "success",
 			closeOnClickOutside: false
-		}).then(function() {
+		}).then(function () {
 			$("#frm").submit();
 		});
 	}
