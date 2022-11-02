@@ -91,5 +91,6 @@ public class FileManager extends AbstractView
 		mf.transferTo(file);
 
 		return bf.toString();
+		// buffer인 bf 전체를 문자열로 리턴
 	}
 }
