@@ -1,7 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kjk.home.">
+<mapper namespace="com.kjk.home.member.MemberMapper">
 
+	<select id="getLogin" parameterType="String"
+		resultMap="loginInfo">
+		select *
+		from member m
+		inner join
+		member_role mr
+		on (m.id =
+		mr.id)
+		inner
+		join
+		role r
+		on (mr.num = r.num)
+		where m.id=#{username}
+	</select>
+	<resultMap type="MemberVO" id="loginInfo">
+		<id column="id" property="id" />
+		<result column="pwd" property="pwd" />
+		<result column="name" property="name" />
+		<result column="email" property="email" />
+		<result column="enabled" property="enabled" />
+		<collection property="roleVOs" javaType="List"
+			ofType="RoleVO">
+			<result column="roleName" property="roleName" />
+		</collection>
+	</resultMap>
+
+	<insert id="setJoin" parameterType="MemberVO">
+		insert into member(id, pwd,
+		name, email, enabled)
+		values(#{id}, #{pwd}, #{name}, #{email}, 1)
+	</insert>
+
+	<insert id="setMemberRole" parameterType="MemberRoleVO">
+		insert into member_role
+		values(null, 3, #{id})
+	</insert>
+
+	<select id="getCheckId" parameterType="MemberVO"
+		resultType="int">
+		select
+		count(id) from
+		member where id = #{id}
+	</select>
 
 </mapper>

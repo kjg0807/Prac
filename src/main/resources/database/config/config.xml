@@ -9,6 +9,10 @@
 		<typeAlias type="com.kjk.home.board.BoardFileVO" alias="BoardFileVO" />
 		<typeAlias type="com.kjk.home.util.Pager" alias="Pager" />
 		
+		<typeAlias type="com.kjk.home.member.MemberVO" alias="MemberVO" />
+		<typeAlias type="com.kjk.home.member.MemberRoleVO" alias="MemberRoleVO" />
+		<typeAlias type="com.kjk.home.member.RoleVO" alias="RoleVO" />
+		
 		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="java.lang.Integer" alias="int"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>
